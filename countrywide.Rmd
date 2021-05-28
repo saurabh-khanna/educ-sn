@@ -1,0 +1,20 @@
+---
+title: "Analysis for CR Paper - Cross-country comparison"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,  message=FALSE, warning=FALSE, fig.retina = 4)
+```
+
+```{r}
+# Libraries
+pacman::p_load(tidyverse)
+
+# Parameters
+df <- read_csv(here::here("data", "test.csv"))
+```
+

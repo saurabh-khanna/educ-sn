@@ -1,0 +1,17 @@
+.Rproj.user/**
+data/
+do_files/
+
+*.do
+*.dta
+*.csv
+*.Rds
+*.tex
+*.docx
+*.pdf
+*.xlsx
+*.gdsheet
+
+report/
+.Rproj.user
+.Rproj.user/
