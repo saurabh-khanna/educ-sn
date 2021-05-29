@@ -1,5 +1,5 @@
 ---
-title: "Analysis for CR Paper - Cross-country comparison"
+title: "Analysis for ERIC SN paper"
 date: "`r Sys.Date()`"
 output: 
   pdf_document:
@@ -12,9 +12,15 @@ knitr::opts_chunk$set(echo = TRUE,  message=FALSE, warning=FALSE, fig.retina = 4
 
 ```{r}
 # Libraries
-pacman::p_load(tidyverse)
+pacman::p_load(tidyverse, janitor)
 
 # Parameters
-df <- read_csv(here::here("data", "test.csv"))
+df <- read_csv(here::here("data", "test.csv")) %>% clean_names() %>% remove_empty()
+```
+
+
+
+```{r}
+df %>% count(col) %>% arrange(-n)
 ```
 
