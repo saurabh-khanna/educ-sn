@@ -21,6 +21,6 @@ df <- read_csv(here::here("data", "test.csv")) %>% clean_names() %>% remove_empt
 
 
 ```{r}
-df %>% count(col) %>% arrange(-n)
+df %>% count(col) %>% arrange(col) %>% filter(str_detect(col, "Hahn, Heather"))
 ```
 
