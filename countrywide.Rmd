@@ -15,12 +15,26 @@ knitr::opts_chunk$set(echo = TRUE,  message=FALSE, warning=FALSE, fig.retina = 4
 pacman::p_load(tidyverse, janitor)
 
 # Parameters
-df <- read_csv(here::here("data", "test.csv")) %>% clean_names() %>% remove_empty()
+df <- read_csv(here::here("data", "all.csv")) %>% clean_names() %>% remove_empty()
+
+summary(df)
+
+df %>%
+  ggplot(aes(eric_date_added)) +
+  geom_bar()
 ```
 
 
 
 ```{r}
-df %>% count(col) %>% arrange(col) %>% filter(str_detect(col, "Hahn, Heather"))
+df2 %>% filter(eric_peer_reviewed == "T")
+
+df2 %>% 
+  inner_join(df, by = "authors") %>% 
+  count(authors) %>% arrange(-n)
+
+df %>% 
+  filter(str_detect(dc_type %>% str_to_lower(), "journal")) %>% 
+  count(dc_source) %>% arrange(-n)
 ```
 

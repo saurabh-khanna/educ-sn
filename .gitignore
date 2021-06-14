@@ -12,6 +12,8 @@ do_files/
 *.pdf
 *.xlsx
 *.gdsheet
+*.edgelist
+*.edgelist.gz
 
 report/
 .Rproj.user
