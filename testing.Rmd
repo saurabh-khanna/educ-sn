@@ -1,0 +1,31 @@
+---
+title: "Analysis for ERIC SN paper"
+date: "`r Sys.Date()`"
+output: 
+  pdf_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,  message=FALSE, warning=FALSE, fig.retina = 4)
+```
+
+```{r}
+# Libraries
+pacman::p_load(tidyverse, janitor)
+
+# Parameters
+df <- read_csv(here::here("subjects.csv")) %>% clean_names() %>% remove_empty()
+
+glimpse(df)
+```
+
+
+```{r}
+df %>% count(subject_top) %>% arrange(-n) %>% DT::datatable()
+# i can just do it - 1 day manually
+# use this table as a reference to decide what we want as categories
+```
+
+
+
