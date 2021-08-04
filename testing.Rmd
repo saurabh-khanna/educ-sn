@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE,  message=FALSE, warning=FALSE, fig.retina = 4
 
 ```{r}
 # Libraries
-pacman::p_load(tidyverse, janitor, writexl)
+pacman::p_load(tidyverse, janitor, writexl, gender)
 
 # Parameters
 df <- read_csv(here::here("subjects.csv")) %>% clean_names() %>% remove_empty()
@@ -27,5 +27,15 @@ df %>% count(subject_top) %>% arrange(-n) %>% writexl::write_xlsx("subjects_v1.x
 # use this table as a reference to decide what we want as categories
 ```
 
+
+
+
+```{r}
+df_temp <- read_csv(here::here("df_temp.csv")) %>% mutate(year = 1980)
+
+gender_df(df_temp, name_col = "first_name", year_col = "year")
+
+df_temp %>% count(first_name)
+```
 
 
