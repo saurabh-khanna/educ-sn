@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE,  message=FALSE, warning=FALSE, fig.retina = 4
 
 ```{r}
 # Libraries
-pacman::p_load(tidyverse, janitor)
+pacman::p_load(tidyverse, janitor, writexl)
 
 # Parameters
 df <- read_csv(here::here("subjects.csv")) %>% clean_names() %>% remove_empty()
@@ -22,7 +22,7 @@ glimpse(df)
 
 
 ```{r}
-df %>% count(subject_top) %>% arrange(-n) %>% DT::datatable()
+df %>% count(subject_top) %>% arrange(-n) %>% writexl::write_xlsx("subjects_v1.xlsx")
 # i can just do it - 1 day manually
 # use this table as a reference to decide what we want as categories
 ```
