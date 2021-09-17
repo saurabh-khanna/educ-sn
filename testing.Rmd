@@ -15,13 +15,27 @@ knitr::opts_chunk$set(echo = TRUE,  message=FALSE, warning=FALSE, fig.retina = 4
 pacman::p_load(tidyverse, janitor, writexl, gender)
 
 # Parameters
-df <- read_csv(here::here("subjects.csv")) %>% clean_names() %>% remove_empty()
+df <- read_csv(here::here("df_genders.csv")) %>% clean_names() %>% remove_empty()
 
 glimpse(df)
+
+df %>% filter(is.na(gender))
+
+df %>% count(gender)
 ```
 
 
+
+
+
+
+
+
+
+
+
 ```{r}
+# reading subjects.csv file as df
 df %>% count(subject_top) %>% arrange(-n) %>% writexl::write_xlsx("subjects_v1.xlsx")
 # i can just do it - 1 day manually
 # use this table as a reference to decide what we want as categories
@@ -31,9 +45,9 @@ df %>% count(subject_top) %>% arrange(-n) %>% writexl::write_xlsx("subjects_v1.x
 
 
 ```{r}
-df_temp <- read_csv(here::here("df_temp.csv")) %>% mutate(year = 1980)
+df_temp <- read_csv(here::here("df_temp.csv")) %>% mutate(min_year = 1900, max_year = 2010)
 
-gender_df(df_temp, name_col = "first_name", year_col = "year")
+gender_df(df_temp, name_col = "first_name", year_col = c("min_year", "max_year"))
 
 df_temp %>% count(first_name)
 ```
