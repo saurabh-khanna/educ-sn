@@ -1,7 +1,12 @@
 .Rproj.user/**
+.DS_Store
+
 data/
 do_files/
 .ipynb_checkpoints/
+results/
+sanne_n_seb/
+dan_lda_code/
 
 *.do
 *.dta
