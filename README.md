@@ -1,3 +1,3 @@
 # educ-sn
 
-SNA for ERIC coauthor data
+Understanding coauthorship networks and collaboration in education for the last 50 years.
